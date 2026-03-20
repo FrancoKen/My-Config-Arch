@@ -1,0 +1,256 @@
+/*@import "/home/jyndev/.cache/wal/colors-waybar.css";*/
+
+* {
+	font-family: "JetBrainsMono Nerd Font";
+	font-weight: bold;
+	font-size: 10px;
+	min-height: 0;
+    margin-top: 1px;
+    color: white;
+}
+
+/* === Main Background === */
+window#waybar {
+    color: #ffffff;
+	background: transparent;
+}
+
+/* === Tooltip === */
+tooltip {
+	background: rgba(5,5,5,10);
+	border: solid;
+	border-radius: 8px;
+/*	border-color: @main-br;*/
+}
+
+tooltip label {
+	color: grey;
+	font-weight: normal;
+	margin: 0.25px;
+}
+
+/* === Workspace === */
+/* == Workspaces == */
+#workspaces {
+	margin-bottom: 0;
+	padding: 0 4px;
+    border-radius: 5px;
+	background: rgba (0,0,0,0.3);
+}
+
+#workspaces button {
+	padding: 0px 5px;
+	margin: 4px 3px;
+	border-radius: 15px;
+	border: 0px;
+	color: #EBB223;
+	background: linear-gradient(45deg, #8080FF, #101040, #00008B);
+	opacity: 0.5;
+	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button.active {
+	padding: 0px 2px;
+	margin: 4px 3px;
+	border-radius: 15px;
+	border: 0px;
+	color: #EBB223;
+	background: linear-gradient(45deg, #8080FF, #00008B);
+	opacity: 1.0;
+	min-width: 40px;
+	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button:hover {
+	border-radius: 15px;
+	color: #8C7800;
+	background: linear-gradient(45deg, #13134D, #0E008C);
+	opacity: 0.8;
+	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+/* == Temperature == */
+#custom-cpuinfo {
+	color: #EBB223;
+	background: rgba(0,0,0,0.5);
+	padding-left: 1px;
+	padding-right: 3px;
+    border-radius: 5px;
+}
+
+/* == Memory == */
+#memory {
+	color: #EBB223;
+	background: rgba(0,0,0,0.3);
+	padding-left: 1px;
+	padding-right: 0;
+    border-radius: 5px;
+}
+
+#memory.warning {
+	color: yellow;
+}
+
+#memory.critical {
+	color: red;
+}
+
+/* == CPU == */
+#cpu {
+    color: #EBB223;
+	padding-right: 5px;
+	background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+}
+
+/* == Distro Icon == */
+#custom-icon {
+	color: #2358EB;
+	background: rgba(0,0,0,0.5);
+	font-size: 16pt;
+	margin-right: -2px;
+    margin-left: -2px;
+	margin-bottom: -1px;
+	padding-right: 1px;
+	padding-left: 1px;
+    border-radius: 0px;
+	text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
+}
+
+/* == Time == */
+#clock.time {
+    color:#EBB223;
+	padding-left: 5px;
+    border-radius: 5px;
+	background: rgba(0,0,0,0.3);
+}
+
+/* == Date == */
+#clock.date {
+	background:rgba(0,0,0,0.3);
+    color:#EBB223; 
+    border-radius: 5px;
+}
+
+#clock.date:hover {
+	background-color: rgba(0,0,0,0.5);
+	text-shadow: none;
+	box-shadow: none;
+}
+
+/* == Output Device == */
+#pulseaudio {
+    color:#EBB223;
+	background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    padding:0 5px;
+    margin: 0 5px;
+}
+
+#pulseaudio:hover {
+	color: #EBB223;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#custom-notification {
+	color: #EBB223;
+	background: rgba(0,0,0,0);
+	border-radius: 10px;
+	margin: 2px 4px 2px 0;
+	padding-right: 6px;
+	padding-left: 9px;
+	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#custom-notification:hover {
+	color: #EBB223;
+	background: rgba(0,0,0,0);
+	text-shadow: none;
+	box-shadow: none;
+}
+
+/* === General === */
+#custom-left {
+    color:#000080;
+	font-size: 15.9pt;
+    padding-left: 1px;
+	text-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+#custom-right {
+    color:#000080;
+	font-size: 15.9pt;
+	padding-right: 1px;
+	text-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+}
+
+#custom-leftin,
+#custom-rightin {
+    color: #2358EB;
+    font-size: 15.9pt;
+    text-shadow: 2px 0 2px rgba(0,0,0,0.2);
+}
+/*===Internet===*/
+#network {
+    /*background-color: black;*/
+    background: rgba(0, 0, 0, 0.5); /* Gris oscuro traslúcido */
+    color: #4B0082;
+    padding: 0 10px;
+    /*margin: 4px 2px;*/
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-weight: bold;
+}
+
+#network.disconnected {
+    background: rgba(0, 0, 0, 0.6); /* Gris oscuro traslúcido */
+    color: #EBB223;
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 8px; /* Esquinas redondeadas */
+    font-weight: bold;
+}
+
+#network.wifi {
+    background-color: rgba(0,0,0,0.5);
+    color: #EBB223;
+}
+
+#network.ethernet {
+    background-color: black;
+    background: rgba(0,0,0,0.3);
+    color: #EBB223;
+}
+/*===Brillo===*/
+#backlight {
+    color: #EBB223/*#90b1b1*/;
+    padding: 0 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+#custom-temperature {
+    color: #ffffff; /* Color blanco por defecto */
+}
+
+#custom-temperature.critical {
+    color: #ff0000; /* Color rojo si hace calor */
+}
+/*===Bluetooth===*/
+#bluetooth {
+    color: #EBB223;
+    background-color: rgba(0,0,0,0.5);
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+#bluetooth.connected {
+    background-color: rgba(0,0,0,0.5);
+    color: #EBB223;
+    border-radius: 5px;
+}
+
+#bluetooth.disabled {
+    background-color: rgba(0,0,0,0.5);
+    color: #EBB223;
+}
+

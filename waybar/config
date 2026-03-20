@@ -1,0 +1,231 @@
+{
+	"layer":"top",
+	"position":"top",
+	"mode":"dock",
+    "width": 1360,
+    "margin-top": 5,
+    "margn-bottom": 0,
+	"reload_style_on_change":true,
+	//"gtk-layer-shell":true,
+	
+    "modules-left":[
+		"custom/left",
+		"hyprland/workspaces",
+		"custom/right",
+        "hyprland/window",
+        "custom/temperature",
+	],
+
+	"modules-center":[
+		"custom/left",
+		"custom/cpuinfo",
+		"custom/left",
+		"memory",
+		"custom/left",
+		"cpu",
+		"custom/leftin",
+		"custom/left",
+		"custom/icon",
+		"custom/right",
+		"custom/rightin",
+		"clock#time",
+		"custom/right",
+		"clock#date",
+		"custom/right",
+		"custom/right"
+	],
+
+	"modules-right":[
+        "bluetooth",
+        "custom/left",
+        "backlight",
+        "custom/left",
+        "pulseaudio",
+		"custom/left",
+        "network",
+		"custom/leftin"
+	],
+
+
+	"hyprland/workspaces":{
+		"on-scroll-up":"hyprctl dispatch workspace -1",
+		"on-scroll-down":"hyprctl dispatch workspace +1",
+		"persistent-workspaces":{
+			"1":[
+				
+			],
+			"2":[
+				
+			],
+			"3":[
+				
+			],
+			"4":[
+				
+			],
+			"5":[
+				
+			]
+		}
+	},
+	"hyprland/window":{
+		"format":"{}",
+		"min-length":5,
+		"max-length":30,
+		"rewrite":{
+			"":"<span foreground='#89b4fa'> </span> Hyprland - Franco",
+			"~":"  Kitty",
+			"zsh":"  Kitty",
+			"kitty":"  Kitty",
+			"jyndev@archlinux:(.*)":"  Kitty -Terminal",
+			"(.*)jyndev@archlinux:~":"  Kitty - Terminal",
+			"(.*)Mozilla Firefox":"<span foreground='#f38ba8'>󰈹 </span> Firefox",
+			"(.*) — Mozilla Firefox":"<span foreground='#f38ba8'>󰈹 </span> $1",
+			"(.*) - Visual Studio Code":"<span foreground='#89b4fa'>󰨞 </span> $1",
+			"(.*)Visual Studio Code":"<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+			"(.*)Spotify":"<span foreground='#a6e3a1'> </span> Spotify",
+			"(.*)Spotify Premium":"<span foreground='#a6e3a1'> </span> Spotify Premium",
+			"OBS(.*)":"<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+			"VLC media player":"<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+			"(.*) - VLC media player":"<span foreground='#fab387'>󰕼 </span> $1",
+			"(.*).jpg":"  $1.jpg",
+			"(.*).png":"  $1.png",
+			"(.*).svg":"  $1.svg",
+			"• Discord(.*)":"Discord$1",
+			"(.*)Discord(.*)":"<span foreground='#89b4fa'> </span> $1Discord$2",
+			"Authenticate":"  Authenticate"
+		}
+	},
+
+	"custom/cpuinfo":{
+		"format":"{}",
+		"tooltip":true,
+		"interval":5,
+		"min-length":8,
+		"max-length":8
+	},
+	"memory":{
+		"states":{
+			"warning":75,
+			"critical":90
+		},
+		"format":"󰘚 {percentage}%",
+		"format-critical":"󰀦 {percentage}%",
+		"tooltip":true,
+		"tooltip-format":"Memory Used: {used:0.1f} GB / {total:0.1f} GB",
+		"interval":5,
+		"min-length":7,
+		"max-length":7
+	},
+	"cpu":{
+		"interval":1,
+		"format":" {}%",
+		"max-length":20
+	},
+	"custom/icon":{
+		"format":"  "
+	},
+	"clock#time":{
+		"format":"󱑂 {:L%I:%M %p}",
+		"tooltip":true,
+		"tooltip-format":"Aqui no hay nada bro",
+		"min-length":8,
+		"max-length":13
+	},
+	"clock#date":{
+		"format":"󰨳 {:%m-%d}",
+		"tooltip-format":"<tt>{calendar}</tt>",
+		"calendar":{
+			"mode":"month",
+			"mode-mon-col":4,
+			"on-click-right":"mode",
+			"format":{
+				"months":"<span color='#b4befe'><b>{}</b></span>",
+				"weekdays":"<span color='#a6adc8'>{}</span>",
+				"today":"<span color='#f38ba8'><b>{}</b></span>"
+			}
+		},
+		"actions":{
+			"on-click":"mode",
+			"on-click-right":"mode"
+		},
+		"min-length":8,
+		"max-length":8
+	},
+	"pulseaudio":{
+		"format":"{icon}{volume}%",
+        "format-bluetooth":"{icon}{volume}%",
+		"format-muted":"󰝟 {volume}%",
+		"format-icons":{
+			"default":[
+				" 󰕿 ",
+				" 󰖀 ",
+				" 󰕾 "
+			],
+			"headphone":" 󰋋 ",
+			"headset":" 󰋋 "
+		},
+		"tooltip":true,
+		"tooltip-format":"Device: {desc}",
+		"on-click":"~/.config/scripts/waybar/volume.sh -o m",
+		"on-scroll-up":"~/.config/scripts/waybar/volume.sh -o i",
+		"on-scroll-down":"~/.config/scripts/waybar/volume.sh -o d",
+		"min-length":6,
+		"max-length":10
+	},
+
+    "network": {
+        "format-wifi": "  {essid}  {bandwidthDownBytes}",
+        "format-ethernet": "  Eth  {bandwidthDownBytes}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}   ",
+       "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "   {ifname}",
+        "interval": 2, // Actualiza cada 2 segundos
+        "format-icons": ["  ", "  ", "  ", "  ", "  "]
+},
+
+    "backlight": {
+        "device": "intel_backlight", // O usa amdgpu_bl0, etc.
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""],
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip": false
+},
+
+    "custom/temperature": {
+        "format": "{} ", // El icono es un ejemplo (termómetro)
+        "interval": 5,      // Actualizar cada 5 segundos
+        "exec": "sensors | grep 'Package id 0' | awk '{print $4}' | tr -d '+°C' | sed 's/\\.0//'", // Explicación abajo
+        "tooltip": true,
+        "tooltip-format": "CPU Temperature: {}\u00B0C"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", // Vacío si quieres ocultarlo cuando está apagado
+        "format-connected": " {num_connections}", // conectados
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager" // Opcional: abre blueman al hacer click
+    },
+
+	"custom/left":{
+		"format":"",
+		"tooltip":false
+	},
+	"custom/right":{
+		"format":"",
+		"tooltip":false
+	},
+	"custom/leftin":{
+		"format":"",
+		"tooltip":false
+	},
+	"custom/rightin":{
+		"format":"",
+		"tooltip":false
+	}
+}
