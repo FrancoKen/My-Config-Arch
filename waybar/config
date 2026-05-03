@@ -38,12 +38,14 @@
 	"modules-right":[
         "bluetooth",
         "custom/left",
-        "backlight",
+        "custom/brightness",
         "custom/left",
         "pulseaudio",
 		"custom/left",
-        "network",
-		"custom/leftin"
+        "custom/network",
+		"custom/leftin",
+        "custom/notification",
+        "custom/rightin"
 	],
 
 
@@ -73,14 +75,14 @@
 		"min-length":5,
 		"max-length":30,
 		"rewrite":{
-			"":"<span foreground='#89b4fa'> </span> Hyprland - Franco",
+			"":"<span foreground='#89b4fa'></span> Hyprland - Franco",
 			"~":"  Kitty",
 			"zsh":"  Kitty",
 			"kitty":"  Kitty",
-			"jyndev@archlinux:(.*)":"  Kitty -Terminal",
-			"(.*)jyndev@archlinux:~":"  Kitty - Terminal",
-			"(.*)Mozilla Firefox":"<span foreground='#f38ba8'>󰈹 </span> Firefox",
-			"(.*) — Mozilla Firefox":"<span foreground='#f38ba8'>󰈹 </span> $1",
+			"franco@archlinux:(.*)":"  Kitty -Terminal",
+			"(.*)franco@archlinux:~":"  Kitty - Terminal",
+			"(.*)Brave":"<span foreground='#f38ba8'> </span> Brave",
+			"(.*) — Brave":"<span foreground='#f38ba8'>  </span> $1",
 			"(.*) - Visual Studio Code":"<span foreground='#89b4fa'>󰨞 </span> $1",
 			"(.*)Visual Studio Code":"<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 			"(.*)Spotify":"<span foreground='#a6e3a1'> </span> Spotify",
@@ -123,7 +125,10 @@
 		"max-length":20
 	},
 	"custom/icon":{
-		"format":"  "
+		"format":"  ",
+        "on-click": "rofi -show drun",// Comando para lanzar
+        "on-click.right": "pkill rofi",
+        "tooltip": false
 	},
 	"clock#time":{
 		"format":"󱑂 {:L%I:%M %p}",
@@ -174,25 +179,23 @@
 		"max-length":10
 	},
 
-    "network": {
-        "format-wifi": "  {essid}  {bandwidthDownBytes}",
-        "format-ethernet": "  Eth  {bandwidthDownBytes}",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ifname} via {gwaddr}   ",
-       "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "   {ifname}",
-        "interval": 2, // Actualiza cada 2 segundos
-        "format-icons": ["  ", "  ", "  ", "  ", "  "]
-},
+    "custom/network": {
+        "exec": "~/.config/waybar/scripts/waybar-wifi.sh",
+        "return-type": "json",
+        "interval": 2,
+        "format": "{}",
+        "tooltip": true,
+        "on-click": "notify-send 'WiFi' \"$(iw dev $(ip -br link | awk '/^wl/ {print $1}' | head -1) info 2>/dev/null | grep ssid | cut -d' ' -f2)\""
+    },
 
-    "backlight": {
-        "device": "intel_backlight", // O usa amdgpu_bl0, etc.
-        "format": "{icon} {percent}%",
-        "format-icons": ["", ""],
+    "custom/brightness": {
+        "exec": "~/.config/waybar/scripts/brightness.sh",
+        "interval": 1,
+        //"return-type": "json",
         "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-",
-        "tooltip": false
-},
+        "tooltip": true
+    },
 
     "custom/temperature": {
         "format": "{} ", // El icono es un ejemplo (termómetro)
@@ -211,6 +214,27 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager" // Opcional: abre blueman al hacer click
     },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+},
 
 	"custom/left":{
 		"format":"",
