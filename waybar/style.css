@@ -33,15 +33,15 @@ tooltip label {
 /* == Workspaces == */
 #workspaces {
 	margin-bottom: 0;
-	padding: 0 4px;
+	padding: 0 2px;
     border-radius: 5px;
 	background: rgba (0,0,0,0.3);
 }
 
 #workspaces button {
-	padding: 0px 5px;
-	margin: 4px 3px;
-	border-radius: 15px;
+	padding: 0px 2px;
+	margin: 3px 1px;
+	border-radius: 10px;
 	border: 0px;
 	color: #EBB223;
 	background: linear-gradient(45deg, #8080FF, #101040, #00008B);
@@ -51,8 +51,8 @@ tooltip label {
 
 #workspaces button.active {
 	padding: 0px 2px;
-	margin: 4px 3px;
-	border-radius: 15px;
+	margin: 3px 2px;
+	border-radius: 10px;
 	border: 0px;
 	color: #EBB223;
 	background: linear-gradient(45deg, #8080FF, #00008B);
@@ -62,19 +62,25 @@ tooltip label {
 }
 
 #workspaces button:hover {
-	border-radius: 15px;
+	border-radius: 10px;
 	color: #8C7800;
 	background: linear-gradient(45deg, #13134D, #0E008C);
 	opacity: 0.8;
 	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-/* == Temperature == */
+/*=== visor de raiz ===*/
+#hyprland-window {
+    color: #EBB223;
+    font-size: 5px;
+}
+
+/* === Temperature === */
 #custom-cpuinfo {
 	color: #EBB223;
 	background: rgba(0,0,0,0.5);
 	padding-left: 1px;
-	padding-right: 3px;
+	padding-right: 2px;
     border-radius: 5px;
 }
 
@@ -98,7 +104,7 @@ tooltip label {
 /* == CPU == */
 #cpu {
     color: #EBB223;
-	padding-right: 5px;
+	padding-right: 2px;
 	background: rgba(0,0,0,0.3);
     border-radius: 6px;
 }
@@ -120,7 +126,7 @@ tooltip label {
 /* == Time == */
 #clock.time {
     color:#EBB223;
-	padding-left: 5px;
+	padding-left: 2px;
     border-radius: 5px;
 	background: rgba(0,0,0,0.3);
 }
@@ -130,6 +136,7 @@ tooltip label {
 	background:rgba(0,0,0,0.3);
     color:#EBB223; 
     border-radius: 5px;
+    padding: 2px;
 }
 
 #clock.date:hover {
@@ -143,8 +150,8 @@ tooltip label {
     color:#EBB223;
 	background: rgba(0,0,0,0.5);
     border-radius: 5px;
-    padding:0 5px;
-    margin: 0 5px;
+    padding:0 2px;
+    margin: 0 3px;
 }
 
 #pulseaudio:hover {
@@ -158,8 +165,8 @@ tooltip label {
 	background: rgba(0,0,0,0);
 	border-radius: 10px;
 	margin: 2px 4px 2px 0;
-	padding-right: 6px;
-	padding-left: 9px;
+	padding-right: 3px;
+	padding-left: 5px;
 	transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
@@ -173,58 +180,65 @@ tooltip label {
 /* === General === */
 #custom-left {
     color:#000080;
-	font-size: 15.9pt;
+	font-size: 15pt;
+    padding-right: 1px;
     padding-left: 1px;
 	text-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
 }
 
 #custom-right {
     color:#000080;
-	font-size: 15.9pt;
+	font-size: 15pt;
 	padding-right: 1px;
+    padding-left: 1px;
 	text-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
 }
 
 #custom-leftin,
 #custom-rightin {
     color: #2358EB;
-    font-size: 15.9pt;
+    font-size: 15pt;
+    padding: 1px;
     text-shadow: 2px 0 2px rgba(0,0,0,0.2);
 }
 /*===Internet===*/
-#network {
-    /*background-color: black;*/
-    background: rgba(0, 0, 0, 0.5); /* Gris oscuro traslúcido */
-    color: #4B0082;
-    padding: 0 10px;
-    /*margin: 4px 2px;*/
+#custom-network {
+    background: rgba(0, 0, 0, 0.5); /** Gris oscuro traslúcido */
+    color: #EBB223;
+    padding: 0 5px;
     border-radius: 5px; /* Esquinas redondeadas */
     font-weight: bold;
 }
 
-#network.disconnected {
+/* Íconos según intensidad */
+#custom-network.signal-0 { color: #ff5555; }  /* rojo - muy débil */
+#custom-network.signal-1 { color: #ffaa55; }  /* naranja */
+#custom-network.signal-2 { color: #ffff55; }  /* amarillo */
+#custom-network.signal-3 { color: #aaffaa; }  /* verde claro */
+#custom-network.signal-4 { color: #55ff55; }  /* verde fuerte */
+
+#custom-network.disconnected {
     background: rgba(0, 0, 0, 0.6); /* Gris oscuro traslúcido */
     color: #EBB223;
-    padding: 0 10px;
+    padding: 0 5px;
     margin: 4px 2px;
     border-radius: 8px; /* Esquinas redondeadas */
     font-weight: bold;
 }
 
-#network.wifi {
+#custom-network.wifi {
     background-color: rgba(0,0,0,0.5);
-    color: #EBB223;
 }
 
-#network.ethernet {
+#custom-network.ethernet {
     background-color: black;
     background: rgba(0,0,0,0.3);
     color: #EBB223;
 }
 /*===Brillo===*/
-#backlight {
+#custom-brightness {
     color: #EBB223/*#90b1b1*/;
-    padding: 0 10px;
+    padding: 0 5px;
     background: rgba(0,0,0,0.5);
     border-radius: 8px;
 }
@@ -253,4 +267,3 @@ tooltip label {
     background-color: rgba(0,0,0,0.5);
     color: #EBB223;
 }
-
